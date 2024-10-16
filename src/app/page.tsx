@@ -23,13 +23,6 @@ import Snow from '../public/Snow/snow.png';
 import Thunderstorm from '../public/Thunder/thunderstorm.png';
 import Windy from '../public/Windy/windy.png';
 
-
-
-const kanit = Kanit({
-  weight: ['400', '700'],
-  subsets: ['latin', 'thai'],
-});
-
 const rubik = Rubik({
   weight: ['400', '700'],
   subsets: ['latin'],
