@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { TextField, InputAdornment, IconButton } from '@mui/material';
 import { Search } from '@mui/icons-material';
-import { Kanit, Rubik } from '@next/font/google';
+import { Rubik } from '@next/font/google';
 import axios from "axios";
 import sunnyClear from '../public/Clear/sun.png';
 import nightClear from '../public/Clear/night.png';
