@@ -207,7 +207,7 @@ export default function Home() {
               {data?.current.temp_c}°C
             </h2>
             <p className="text-2xl text-slate-300 font-bold text-center">
-              <span className="text-black">{formatDate(data?.location.localtime)},</span> {formatTime(data?.location.localtime)}
+              <span className="text-black">{formatDate(data?.location.localtime ?? '')},</span> {formatTime(data?.location.localtime ?? '')}
             </p>
             <hr className="my-4" />
             <p className="text-lg font-semibold text-center">{data?.current.condition.text}</p>
