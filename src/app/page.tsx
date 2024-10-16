@@ -121,44 +121,44 @@ export default function Home() {
 
         if (text == "Clear" || text == "Partly Sunny" || text == "Sunny") {
           if (is_day === 1) {
-            setIcon(sunnyClear);
+            setIcon(sunnyClear.src); // Use `.src` to get the URL string
           } else {
-            setIcon(nightClear);
+            setIcon(nightClear.src);
           }
         } else if (text == "Partly cloudy") {
           if (is_day === 1) {
-            setIcon(sunnyPartlyCloudy);
+            setIcon(sunnyPartlyCloudy.src);
           } else {
-            setIcon(nightPartlyCloudy);
+            setIcon(nightPartlyCloudy.src);
           }
         } else if (text == "Cloudy") {
           if (is_day === 1) {
-            setIcon(sunnyCloudy);
+            setIcon(sunnyCloudy.src);
           } else {
-            setIcon(nightCloudy);
+            setIcon(nightCloudy.src);
           }
         } else if (text == "Overcast") {
-          setIcon(Overcast);
+          setIcon(Overcast.src);
         } else if (text == "Mist") {
-          setIcon (Mist);
-        } else if(text == "Patchy Rain" || text == "Light Rain" || text == "Moderate Rain" || text == "Heavy Rain" || text == "Showers") {
-          setIcon (Rain);
-        } else if (text == "Thunderstorms"){
-          setIcon(Thunderstorm);
-        } else if (text == "Snow" || text == "Sleet" || text == "Ice Pellets" || text == "Blowing Snow"){
-          setIcon(Snow);
-        } else if (text == "Fog" || text == "Haze" || text == "Dust" || text == "Ash"){
-          setIcon(Fog);
+          setIcon(Mist.src);
+        } else if (text == "Patchy Rain" || text == "Light Rain" || text == "Moderate Rain" || text == "Heavy Rain" || text == "Showers") {
+          setIcon(Rain.src);
+        } else if (text == "Thunderstorms") {
+          setIcon(Thunderstorm.src);
+        } else if (text == "Snow" || text == "Sleet" || text == "Ice Pellets" || text == "Blowing Snow") {
+          setIcon(Snow.src);
+        } else if (text == "Fog" || text == "Haze" || text == "Dust" || text == "Ash") {
+          setIcon(Fog.src);
         } else if (text == "Sand") {
-          setIcon(Sand);
-        } else if (text == "Squalls" || text == "Breezy"){
-          setIcon(Breezy);
-        } else if (text == "Hot"){
-          setIcon(Hot);
-        } else if (text == "Cold"){
-          setIcon(Cold)
-        } else if (text == "Windy"){
-          setIcon(Windy)
+          setIcon(Sand.src);
+        } else if (text == "Squalls" || text == "Breezy") {
+          setIcon(Breezy.src);
+        } else if (text == "Hot") {
+          setIcon(Hot.src);
+        } else if (text == "Cold") {
+          setIcon(Cold.src);
+        } else if (text == "Windy") {
+          setIcon(Windy.src);
         }
 
         setData(apiResponse.data);
