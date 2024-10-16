@@ -176,7 +176,7 @@ export default function Home() {
   // when render
   useEffect(() => {
     handleData()
-  }, [1])
+  }, [handleData])
 
   return (
     <div className={`${rubik.className} h-screen`}>
