@@ -101,7 +101,7 @@ export default function Home() {
   };
 
   const handleData = async () => {
-    const key: string | undefined = "35a04c004e5e4acfb7e82814241510";
+    const key: string | undefined = process.env.NEXT_PUBLIC_API_KEY;
 
     if (!key) {
       console.error('API key is missing');
