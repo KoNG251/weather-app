@@ -161,9 +161,9 @@ export default function Home() {
           setIcon(Windy.src);
         } else {
           if (is_day === 1) {
-            setIcon(sunnyClear);
+            setIcon(sunnyClear.src);
           } else {
-            setIcon(nightClear);
+            setIcon(nightClear.src);
           }
         }
 
