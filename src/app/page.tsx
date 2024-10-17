@@ -109,7 +109,7 @@ export default function Home() {
     }
 
     try {
-      const apiResponse = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`);
+      const apiResponse = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`);
       const makeData = apiResponse.data;
       const text: string = makeData?.current.condition.text;
       const is_day: number = makeData?.current.is_day;
