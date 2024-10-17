@@ -159,6 +159,12 @@ export default function Home() {
           setIcon(Cold.src);
         } else if (text == "Windy") {
           setIcon(Windy.src);
+        } else {
+          if (is_day === 1) {
+            setIcon(sunnyClear);
+          } else {
+            setIcon(nightClear);
+          }
         }
 
         setData(apiResponse.data);
@@ -169,7 +175,7 @@ export default function Home() {
   // when render
   useEffect(() => {
     handleData()
-  }, [handleData])
+  }, [])
 
   return (
     <div className={`${rubik.className} h-screen`}>
