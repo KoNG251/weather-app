@@ -100,77 +100,58 @@ export default function Home() {
     return time;
   };
 
-  const handleData = () => {
-
-    const key: string | undefined = process.env.NEXT_PUBLIC_API_KEY
+  const handleData = async () => {
+    const key: string | undefined = process.env.NEXT_PUBLIC_API_KEY;
 
     if (!key) {
       console.error('API key is missing');
       return;
     }
 
-    const apiRequest = axios.get(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`);
+    try {
+      const apiResponse = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`);
+      const makeData = apiResponse.data;
+      const text: string = makeData?.current.condition.text;
+      const is_day: number = makeData?.current.is_day;
 
-    Promise.all([apiRequest])
-      .then(([apiResponse]) => {
-        console.log(apiResponse.data)
+      if (text === "Clear" || text === "Partly Sunny" || text === "Sunny") {
+        setIcon(is_day === 1 ? sunnyClear.src : nightClear.src);
+      } else if (text === "Partly cloudy") {
+        setIcon(is_day === 1 ? sunnyPartlyCloudy.src : nightPartlyCloudy.src);
+      } else if (text === "Cloudy") {
+        setIcon(is_day === 1 ? sunnyCloudy.src : nightCloudy.src);
+      } else if (text === "Overcast") {
+        setIcon(Overcast.src);
+      } else if (text === "Mist") {
+        setIcon(Mist.src);
+      } else if (["Patchy Rain", "Light Rain", "Moderate Rain", "Heavy Rain", "Showers"].includes(text)) {
+        setIcon(Rain.src);
+      } else if (text === "Thunderstorms") {
+        setIcon(Thunderstorm.src);
+      } else if (["Snow", "Sleet", "Ice Pellets", "Blowing Snow"].includes(text)) {
+        setIcon(Snow.src);
+      } else if (["Fog", "Haze", "Dust", "Ash"].includes(text)) {
+        setIcon(Fog.src);
+      } else if (text === "Sand") {
+        setIcon(Sand.src);
+      } else if (["Squalls", "Breezy"].includes(text)) {
+        setIcon(Breezy.src);
+      } else if (text === "Hot") {
+        setIcon(Hot.src);
+      } else if (text === "Cold") {
+        setIcon(Cold.src);
+      } else if (text === "Windy") {
+        setIcon(Windy.src);
+      } else {
+        setIcon(is_day === 1 ? sunnyClear.src : nightClear.src);
+      }
 
-        const makeData = apiResponse.data;
-        const text: string = makeData?.current.condition.text;
-        const is_day: number = makeData?.current.is_day;
+      setData(apiResponse.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
-        if (text == "Clear" || text == "Partly Sunny" || text == "Sunny") {
-          if (is_day === 1) {
-            setIcon(sunnyClear.src); // Use `.src` to get the URL string
-          } else {
-            setIcon(nightClear.src);
-          }
-        } else if (text == "Partly cloudy") {
-          if (is_day === 1) {
-            setIcon(sunnyPartlyCloudy.src);
-          } else {
-            setIcon(nightPartlyCloudy.src);
-          }
-        } else if (text == "Cloudy") {
-          if (is_day === 1) {
-            setIcon(sunnyCloudy.src);
-          } else {
-            setIcon(nightCloudy.src);
-          }
-        } else if (text == "Overcast") {
-          setIcon(Overcast.src);
-        } else if (text == "Mist") {
-          setIcon(Mist.src);
-        } else if (text == "Patchy Rain" || text == "Light Rain" || text == "Moderate Rain" || text == "Heavy Rain" || text == "Showers") {
-          setIcon(Rain.src);
-        } else if (text == "Thunderstorms") {
-          setIcon(Thunderstorm.src);
-        } else if (text == "Snow" || text == "Sleet" || text == "Ice Pellets" || text == "Blowing Snow") {
-          setIcon(Snow.src);
-        } else if (text == "Fog" || text == "Haze" || text == "Dust" || text == "Ash") {
-          setIcon(Fog.src);
-        } else if (text == "Sand") {
-          setIcon(Sand.src);
-        } else if (text == "Squalls" || text == "Breezy") {
-          setIcon(Breezy.src);
-        } else if (text == "Hot") {
-          setIcon(Hot.src);
-        } else if (text == "Cold") {
-          setIcon(Cold.src);
-        } else if (text == "Windy") {
-          setIcon(Windy.src);
-        } else {
-          if (is_day === 1) {
-            setIcon(sunnyClear.src);
-          } else {
-            setIcon(nightClear.src);
-          }
-        }
-
-        setData(apiResponse.data);
-      })
-
-  }
 
   // when render
   useEffect(() => {
