@@ -114,37 +114,37 @@ export default function Home() {
       const text: string = makeData?.current.condition.text;
       const is_day: number = makeData?.current.is_day;
 
-      if (text === "Clear" || text === "Partly Sunny" || text === "Sunny") {
+      if (/^(Clear|Partly Sunny|Sunny)$/i.test(text)) {
         setIcon(is_day === 1 ? sunnyClear.src : nightClear.src);
-      } else if (text === "Partly cloudy") {
+    } else if (/^Partly cloudy$/i.test(text)) {
         setIcon(is_day === 1 ? sunnyPartlyCloudy.src : nightPartlyCloudy.src);
-      } else if (text === "Cloudy") {
+    } else if (/^Cloudy$/i.test(text)) {
         setIcon(is_day === 1 ? sunnyCloudy.src : nightCloudy.src);
-      } else if (text === "Overcast") {
+    } else if (/^Overcast$/i.test(text)) {
         setIcon(Overcast.src);
-      } else if (text === "Mist") {
+    } else if (/^Mist$/i.test(text)) {
         setIcon(Mist.src);
-      } else if (["Patchy Rain", "Light Rain", "Moderate Rain", "Heavy Rain", "Showers"].includes(text)) {
+    } else if (/^(Patchy Rain|Light Rain|Moderate Rain|Heavy Rain|Showers|Rain)$/i.test(text)) {
         setIcon(Rain.src);
-      } else if (text === "Thunderstorms") {
+    } else if (/^Thunderstorms$/i.test(text)) {
         setIcon(Thunderstorm.src);
-      } else if (["Snow", "Sleet", "Ice Pellets", "Blowing Snow"].includes(text)) {
+    } else if (/^(Snow|Sleet|Ice Pellets|Blowing Snow)$/i.test(text)) {
         setIcon(Snow.src);
-      } else if (["Fog", "Haze", "Dust", "Ash"].includes(text)) {
+    } else if (/^(Fog|Haze|Dust|Ash)$/i.test(text)) {
         setIcon(Fog.src);
-      } else if (text === "Sand") {
+    } else if (/^Sand$/i.test(text)) {
         setIcon(Sand.src);
-      } else if (["Squalls", "Breezy"].includes(text)) {
+    } else if (/^(Squalls|Breezy)$/i.test(text)) {
         setIcon(Breezy.src);
-      } else if (text === "Hot") {
+    } else if (/^Hot$/i.test(text)) {
         setIcon(Hot.src);
-      } else if (text === "Cold") {
+    } else if (/^Cold$/i.test(text)) {
         setIcon(Cold.src);
-      } else if (text === "Windy") {
+    } else if (/^Windy$/i.test(text)) {
         setIcon(Windy.src);
-      } else {
+    } else {
         setIcon(is_day === 1 ? sunnyClear.src : nightClear.src);
-      }
+    }    
 
       setData(apiResponse.data);
     } catch (error) {
