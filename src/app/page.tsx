@@ -124,17 +124,17 @@ export default function Home() {
         setIcon(Overcast.src);
     } else if (/^Mist$/i.test(text)) {
         setIcon(Mist.src);
-    } else if (/^(Patchy Rain|Light Rain|Moderate Rain|Heavy Rain|Showers|Rain)$/i.test(text)) {
+    } else if (/rain|showers|patchy rain|light rain|moderate rain|heavy rain/i.test(text)) {
         setIcon(Rain.src);
     } else if (/^Thunderstorms$/i.test(text)) {
         setIcon(Thunderstorm.src);
-    } else if (/^(Snow|Sleet|Ice Pellets|Blowing Snow)$/i.test(text)) {
+    } else if (/snow|sleet|ice pellets|blowing snow/i.test(text)) {
         setIcon(Snow.src);
-    } else if (/^(Fog|Haze|Dust|Ash)$/i.test(text)) {
+    } else if (/fog|haze|dust|ash/i.test(text)) {
         setIcon(Fog.src);
     } else if (/^Sand$/i.test(text)) {
         setIcon(Sand.src);
-    } else if (/^(Squalls|Breezy)$/i.test(text)) {
+    } else if (/squalls|breezy/i.test(text)) {
         setIcon(Breezy.src);
     } else if (/^Hot$/i.test(text)) {
         setIcon(Hot.src);
@@ -144,7 +144,8 @@ export default function Home() {
         setIcon(Windy.src);
     } else {
         setIcon(is_day === 1 ? sunnyClear.src : nightClear.src);
-    }    
+    }
+    
 
       setData(apiResponse.data);
     } catch (error) {
